@@ -1,6 +1,9 @@
+from importlib import reload
 import pygame
 from pygame import Vector2
 import sys
+import game
+reload(game)
 from game import MAIN
 
 def main():
@@ -16,21 +19,19 @@ def main():
     
     # Load resources
     clock = pygame.time.Clock()
-    apple = pygame.image.load("assets/graphics/apple.png").convert_alpha()
     game_font = pygame.font.Font("assets/fonts/PoetsenOne-Regular.ttf", 25)
     
     # Define custom event for game updates
     SCREEN_UPDATE = pygame.USEREVENT
     
     # Create game instance
-    main_game = MAIN(cell_size, cell_number, screen, apple, game_font, SCREEN_UPDATE)
+    main_game = MAIN(cell_size, cell_number, screen, game_font, SCREEN_UPDATE)
     
     # Game loop
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
+                quit_game()
             if event.type == SCREEN_UPDATE:
                 main_game.update()
             if event.type == pygame.KEYDOWN:
@@ -46,6 +47,8 @@ def main():
                 if event.key == pygame.K_RIGHT:
                     if main_game.snake.direction != Vector2(-1, 0):
                         main_game.snake.direction = Vector2(1, 0)
+                if event.key == pygame.K_ESCAPE: 
+                    quit_game()
     
         # Draw everything
         screen.fill((175, 215, 70))
@@ -54,6 +57,10 @@ def main():
         # Update display and control frame rate
         pygame.display.update()
         clock.tick(60)
+
+def quit_game():
+    pygame.quit()
+    sys.exit()
 
 if __name__ == "__main__":
     main()

@@ -1,4 +1,5 @@
 import pygame
+import pygame.locals
 from pygame.math import Vector2
 
 from snake import SNAKE
@@ -7,17 +8,17 @@ from fruit import FRUIT
 
 class MAIN:
     def __init__(
-        self, cell_size, cell_number, screen, apple_image, game_font, SCREEN_UPDATE
+        self, cell_size, cell_number, screen, game_font, SCREEN_UPDATE
     ):
         self.cell_size = cell_size
         self.cell_number = cell_number
         self.screen = screen
-        self.apple_image = apple_image
         self.game_font = game_font
+        self.apple_image = pygame.image.load("assets/graphics/apple.png").convert_alpha() # that's for the score
         self.SCREEN_UPDATE = SCREEN_UPDATE
 
         self.snake = SNAKE(cell_size, screen)
-        self.fruit = FRUIT(cell_size, cell_number, screen, apple_image)
+        self.fruit = FRUIT(cell_size, cell_number, screen)
         self.speed = 250
         self.score = 0
         self.update_game_speed()
