@@ -6,16 +6,7 @@ A classic Snake Game implementation using Pygame, following the [Clear Code tuto
 
 This is a modern implementation of the classic Snake game with graphical assets, sound effects, and increasing difficulty as you progress. The game has been refactored into a modular structure with each component having its own class and file.
 
-![Snake Game Screenshot](https://i.imgur.com/example-screenshot.png)
-
-## Features
-
-- Smooth snake movement with proper graphics for head, body, and tail
-- Dynamic difficulty: the snake moves faster as it grows longer (added by me)
-- Score display
-- Sound effects
-- Grass pattern background
-- Game over when hitting walls or yourself
+![Snake Game Screenshot](assets/screenshots/gui.png)
 
 ## Requirements
 
